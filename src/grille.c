@@ -127,11 +127,17 @@ void afficher_grille() {
         printf("|");
 
         for (int col = 0; col < NB_ROW+1; ++col) {
-            if (isalpha(grille[col][lgn]))
+            char c = grille[col][lgn];
+
+            switch (c)
             {
-                printf(" %c |", grille[col][lgn]);
-            } else {
+                case PION_J1:
+                case PION_J2:
+                printf(" %c |", c);
+                break;
+                default:
                 printf("   |");
+                break;
             }
 
         }
