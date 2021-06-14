@@ -1,5 +1,5 @@
 CC     := gcc
-CFLAGS := -Iinclude -O2 -pedantic -std=c17 -Wall -Wextra
+CFLAGS := -Iinclude -O2 -pedantic -std=c17 -Wall -Werror -Wextra
 
 .PHONY: all clean
 
