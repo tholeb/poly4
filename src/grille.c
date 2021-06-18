@@ -131,11 +131,22 @@ void afficher_grille() {
 
             switch (c)
             {
-                case PION_J1:
-                case PION_J2:
-                printf(" %c |", c);
-                break;
+                switch (grille[col][lgn])
+                {
+                case 'X':
+                    /* code */
+                    printf(" \033[0;31m%c\033[0m |", grille[col][lgn]);
+                    break;
+                
+                case 'O':
+                    printf(" \033[0;33m%c\033[0m |", grille[col][lgn]);
+                    break;
+
                 default:
+                    printf(" %c |", grille[col][lgn]);
+                    break;
+                }
+            } else {
                 printf("   |");
                 break;
             }
