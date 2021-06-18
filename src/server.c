@@ -39,14 +39,13 @@ int main(void)
 		return 1;
 	}
 
-	// adresses acceptées par le serveur
 	struct sockaddr_in addr;
 
 	addr.sin_family = AF_INET;
-	addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	addr.sin_port = htons(8000);
+	addr.sin_addr.s_addr = htonl(INADDR_ANY); // interface du serveur
+	addr.sin_port = htons(8000); // port du serveur
 
-	// on affecte le serveur aux adresses ci-dessus
+	// on affecte au serveur les paramètres ci dessus
 	err = bind(sock, (struct sockaddr *)&addr, sizeof(struct sockaddr));
 
 	perror("bind");
