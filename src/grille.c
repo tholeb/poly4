@@ -4,13 +4,20 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+// Matrice de 2d pour le stockage des pions
 char grille[NB_COL][NB_ROW];
 
+// Prototypes
 void ajouter_pion(char pion, int col);
 int demander_coup();
 void afficher_grille();
 int puissance4(char pion);
 
+/**
+	Ajoute un pion à la grille.
+	@param pion Le pion a ajouter à la grille.
+	@param col La colonne à laquelle insérer le pion.
+*/
 void ajouter_pion(char pion, int col) {
     int ligne = 0;
     while (ligne < NB_ROW-1 && grille[col][ligne+1] == 0)
@@ -20,6 +27,11 @@ void ajouter_pion(char pion, int col) {
     grille[col][ligne] = pion;
 }
 
+/**
+	Demande sur stdin quel coup l'utilisateur souhaite jouer.
+
+	@return La colonne à jouer, telle que 0 <= colonne < NB_COL
+*/
 int demander_coup() {
     int col = 0;
     do {
@@ -27,12 +39,20 @@ int demander_coup() {
 
         printf("Colonne: ");
 
+        // équilvalent à stdin
         col = getchar();
-    } while(col < '0' || col > '0' + NB_COL-1);
+    } while(col < '0' || col > '0' + NB_COL-1); // range pour le placement du pion
 
     return col-'0';
 }
 
+/**
+	Cherche un alignement de 4 pions identiques au pion passés en paramètre.
+
+	@param pion Le pion pour lequel chercher un alignement.
+
+	@return 1 si un alignement de 4 pions a été trouvé, 0 sinon.
+*/
 int puissance4(char pion) {
     int counter = 0;
 
@@ -103,6 +123,9 @@ int puissance4(char pion) {
     return 0;
 }
 
+/**
+	Affiche la grille sur stdout.
+*/
 void afficher_grille() {
     if (system("clear")) return;
 
@@ -111,7 +134,7 @@ void afficher_grille() {
     for (int col = 0; col < NB_COL; col++) printf("---+");
     printf("\n");
 
-    // Nombres
+    // Numéros des colonnes
     for (int col = 0; col < NB_COL; col++) printf("  %d ", col);
     printf("\n");
 
@@ -120,7 +143,7 @@ void afficher_grille() {
     for (int col = 0; col < NB_COL; col++) printf("---+");
 
 
-    //  Génère les lignes et colonnes
+    //  Génère les lignes et colonnes avec les pions
     printf("\n");
     for (int lgn = 0; lgn < NB_ROW; ++lgn)
     {
@@ -131,10 +154,8 @@ void afficher_grille() {
 
             switch (c)
             {
-                switch (grille[col][lgn])
-                {
+                // Switch pour la couleur des pions
                 case 'X':
-                    /* code */
                     printf(" \033[0;31m%c\033[0m |", grille[col][lgn]);
                     break;
                 
@@ -143,18 +164,14 @@ void afficher_grille() {
                     break;
 
                 default:
-                    printf(" %c |", grille[col][lgn]);
+                    printf("   |");
                     break;
-                }
-            } else {
-                printf("   |");
-                break;
             }
 
         }
 
+        // Dernière ligne de l'affichage
         printf("\n+");
-
         for (int col = 1; col <= NB_COL; ++col) printf("---+");
 
         printf("\n");
