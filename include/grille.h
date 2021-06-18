@@ -1,11 +1,6 @@
 #ifndef GRILLE_H
 #define GRILLE_H
 
-// type du message
-#define DEMANDER_COUP 0
-#define INDIQUER_COUP 1
-#define FIN_DE_PARTIE 2
-
 // taille de la grille
 #define NB_COL 7
 #define NB_ROW 6

@@ -9,6 +9,7 @@
 #include <time.h>
 
 #include "grille.h"
+#include "utils.h"
 
 extern char grille[NB_COL][NB_ROW];
 

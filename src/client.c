@@ -8,6 +8,7 @@
 #include <stdio.h>
 
 #include "grille.h"
+#include "utils.h"
 
 int main(void)
 {
@@ -41,9 +42,6 @@ int main(void)
 		return 1;
 	}
 
-	// chaque message du serveur vers le client aura le format suivant :
-	// le premier octet indique le type du message
-	// le second octet est un numéro de colonne (ou rien du tout selon le type de message)
 	uint8_t msg[2];
 
 	// numéro du joueur qui joue actuellement (utile pour savoir quel pion afficher).
