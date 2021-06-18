@@ -104,7 +104,8 @@ int puissance4(char pion) {
 }
 
 void afficher_grille() {
-    system("clear");
+    if (system("clear")) return;
+
     // Ligne d'en tête
     printf("+");
     for (int col = 0; col < NB_COL; col++) printf("---+");
@@ -126,7 +127,9 @@ void afficher_grille() {
         printf("|");
 
         for (int col = 0; col < NB_ROW+1; ++col) {
-            if (isalpha(grille[col][lgn]))
+            char c = grille[col][lgn];
+
+            switch (c)
             {
                 switch (grille[col][lgn])
                 {
@@ -145,6 +148,7 @@ void afficher_grille() {
                 }
             } else {
                 printf("   |");
+                break;
             }
 
         }
