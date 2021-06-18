@@ -91,7 +91,6 @@ int puissance4(char pion) {
     }
 
     // Diagonal
-    // y et x case actuelle 
     for (int y = 0; y < 3; y++)
     {
         for (int x = 0; x < 4; x++)
@@ -99,7 +98,6 @@ int puissance4(char pion) {
             int count1 = 0;
             int count2 = 0;
 
-            // J c'est le décalage (+j eh haut; -j en bas)
             for (int j = 0; j < 4; j++)
             {
                 if (grille[x+j][y+j] == pion)
