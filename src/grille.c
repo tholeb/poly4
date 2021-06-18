@@ -128,7 +128,21 @@ void afficher_grille() {
         for (int col = 0; col < NB_ROW+1; ++col) {
             if (isalpha(grille[col][lgn]))
             {
-                printf(" %c |", grille[col][lgn]);
+                switch (grille[col][lgn])
+                {
+                case 'X':
+                    /* code */
+                    printf(" \033[0;31m%c\033[0m |", grille[col][lgn]);
+                    break;
+                
+                case 'O':
+                    printf(" \033[0;33m%c\033[0m |", grille[col][lgn]);
+                    break;
+
+                default:
+                    printf(" %c |", grille[col][lgn]);
+                    break;
+                }
             } else {
                 printf("   |");
             }
